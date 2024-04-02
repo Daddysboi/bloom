@@ -77,6 +77,8 @@ export const CardContainer = ({
   );
 };
 
+CardContainer.displayName = 'CardContainer';
+
 export const CardBody = ({
   children,
   className,
