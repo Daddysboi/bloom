@@ -1,17 +1,16 @@
 "use client";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import styled from "styled-components";
 import ButtonComponent from "../button";
+import { FaBars, FaTimes } from "react-icons/fa";
 
 // Images
 import logo from "../../public/assets/logo.png";
-import Hamburger from "../../public/assets/hamburger-svgrepo-com.svg";
-import Close from "../../public/assets/times-svgrepo-com.svg";
 
-const NavBar = styled.nav`
-  padding: 1rem 5rem 1rem 5rem;
+const Container = styled.nav`
+  padding: 1rem 10rem;
   top: 0;
   left: 0;
   right: 0;
@@ -21,19 +20,15 @@ const NavBar = styled.nav`
   justify-content: space-between;
   align-items: center;
   position: fixed;
-  background: linear-gradient(to right, #B4E9E4, #D8D9F7);
+  background: linear-gradient(to right, #b4e9e4, #d8d9f7);
 
-
-
-  .menu-btn {
-    cursor: pointer;
-    transition: transform 0.3s;
-
-    &.open {
-      transform: rotate(180deg) skewY(12deg);
-    }
+  @media only screen and (min-width: 320px) and (max-width: 768px) {
+    padding: 1rem 1rem;
   }
 
+  @media only screen and (min-width: 769px) and (max-width: 1024px) {
+    padding: 1rem 2rem;
+  }
 `;
 
 const Logo = styled.div`
@@ -56,20 +51,64 @@ const Links = styled.div`
   display: inline-flex;
   gap: 4rem;
   font-weight: 500;
+
+  @media only screen and (min-width: 320px) and (max-width: 768px) {
+    display: none;
+  }
+
+  @media only screen and (min-width: 769px) and (max-width: 1024px) {
+    gap: 1rem;
+  }
+  @media only screen and (min-width: 1025px) and (max-width: 1200px) {
+    gap: 2rem;
+  }
 `;
+
 const MobileLinks = styled.div`
-  display: flex;
+  display: none;
   flex-direction: column;
   position: absolute;
-  top: 76px;
+  right: 0;
+  bottom: 0;
+  top: 0;
   width: 100%;
-  height: 70vh;
-  padding-top: 10px;
-  gap: 10px;
+  height: 100vh;
+  gap: 2rem;
   transition: all 0.5s;
+  background-color: rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  align-items: center;
+  font-weight: 600;
+  font-size: 1.2rem;
+  padding-top: 6rem;
+  @media only screen and (min-width: 320px) and (max-width: 768px) {
+    display: flex;
+  }
 `;
+
 const Buttons = styled.div`
   display: flex;
+`;
+
+const NavIcon = styled.span`
+  z-index: 5;
+  margin-right: 1rem;
+  font-size: 1.5rem;
+  color: #333;
+  transition: 0.3s;
+  cursor: pointer;
+  display: none;
+
+  @media only screen and (min-width: 320px) and (max-width: 768px) {
+    display: block;
+  }
+`;
+
+const SignUp = styled.span`
+  @media only screen and (min-width: 320px) and (max-width: 768px) {
+    display: none;
+  }
 `;
 
 const navLinks = [
@@ -90,6 +129,7 @@ const navLinks = [
     href: "/",
   },
 ];
+
 const Navbar = () => {
   const [open, setOpen] = useState(false);
 
@@ -97,10 +137,10 @@ const Navbar = () => {
     setOpen((prev) => !prev);
   };
 
-  const toggleSrc = open ? Close : Hamburger;
+  const toggleSrc = open ? <FaBars /> : <FaTimes />;
 
   return (
-    <NavBar>
+    <Container>
       <Link href="/" passHref>
         <Logo>
           <Img>
@@ -109,41 +149,51 @@ const Navbar = () => {
           <Text>Bloom</Text>
         </Logo>
       </Link>
-      <Links>
-       
-        {open ? (
-          <MobileLinks className={`nav-links ${open ? "open" : ""}`}>
-            {navLinks.map((link, index) => (
-              <Link key={index} href={link.href} passHref>
-                {link.label}
-              </Link>
-            ))}
-          </MobileLinks>
-        ) : (
-          <>
 
+      {open ? (
+        <MobileLinks>
+          {navLinks.map((link, index) => (
+            <Link
+              key={index}
+              href={link.href}
+              passHref
+              onClick={() => {
+                setOpen(!open);
+              }}
+            >
+              {link.label}
+            </Link>
+          ))}
+          <ButtonComponent
+            text="Sign Up"
+            onClick={() => {
+              setOpen(!open);
+            }}
+          />
+        </MobileLinks>
+      ) : (
+        <Links>
           {navLinks.map((link, index) => (
             <Link key={index} href={link.href} passHref>
               {link.label}
             </Link>
           ))}
-          </>
-        )}
-      </Links>
+        </Links>
+      )}
+
       <Buttons>
-        {open ? (
-          <Image
-          src={toggleSrc}
-          alt="menu-btn"
-          width={50}
-          height={50}
-          onClick={handleToggle}
-          />
+        <NavIcon>
+          {open ? (
+            <FaTimes onClick={handleToggle} />
           ) : (
-         <ButtonComponent text="Sign Up" />
-        )}
+            <FaBars onClick={handleToggle} />
+          )}
+        </NavIcon>
+        <SignUp>
+          <ButtonComponent text="Sign Up" />
+        </SignUp>
       </Buttons>
-    </NavBar>
+    </Container>
   );
 };
 

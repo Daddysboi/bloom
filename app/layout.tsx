@@ -2,22 +2,18 @@ import "./globals.css";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-   title: "Bloom",
-   description: "Fntech App",
-   icons:{
-      icon: "./logo.png",
-      apple:"./logo.png",
-   }
+  title: "Bloom",
+  description: "Fntech App",
 };
 
 export default function RootLayout({
-   children,
+  children,
 }: {
-   children: React.ReactNode;
+  children: React.ReactNode;
 }) {
-   return (
-      <html lang="en">
-         <body>{children}</body>
-      </html>
-   );
+  return (
+    <html lang="en">
+      <body>{children}</body>
+    </html>
+  );
 }

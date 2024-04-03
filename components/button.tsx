@@ -9,16 +9,21 @@ const Button = styled.figure<{ width?: string }>`
   padding: 0.5rem 1rem;
   font-size: 1rem;
   font-weight: bold;
-  line-height: 1.5;
-  display: none;
   width: ${(props) => props.width || "6rem"};
-  @media (min-width: 1024px) {
-    display: block;
-  }
 `;
 
-const ButtonComponent = ({ text, width }: { text: string; width?: string }) => {
-  return <Button width={width}>{text}</Button>;
+interface ButtonType {
+  text: string;
+  width?: string;
+  onClick?: () => void;
+}
+
+const ButtonComponent = ({ text, width, onClick = () => {} }: ButtonType) => {
+  return (
+    <Button width={width} onClick={onClick}>
+      {text}
+    </Button>
+  );
 };
 
 export default ButtonComponent;

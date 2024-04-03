@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import Image from "next/image";
 import styled from "styled-components";
 import Link from "next/link";
@@ -6,11 +6,13 @@ import Link from "next/link";
 import googleplay from "../../public/assets/googleplay.svg";
 import apple from "../../public/assets/apple.svg";
 
-const FooterContainer = styled.footer`
-`;
+const FooterContainer = styled.footer``;
 
 const Section = styled.div`
-padding-bottom: 2.5rem;
+  padding-bottom: 2.5rem;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
 `;
 
 const Divider = styled.div`
@@ -21,37 +23,55 @@ const Divider = styled.div`
 
 const Title = styled.h2`
   text-align: center;
-  font-family: 'raleway', sans-serif;
   font-size: 2rem;
   font-weight: bold;
   line-height: 3rem;
+  @media only screen and (min-width: 320px) and (max-width: 600px) {
+    font-size: 2rem;
+    line-height: 2.5rem;
+    text-align: center;
+    padding: 0 1rem;
+  }
 `;
 
 const Subtitle = styled.p`
   text-align: center;
-  font-family: 'lato', sans-serif;
+  font-family: "lato", sans-serif;
   font-size: 1rem;
   opacity: 0.75;
   line-height: 1.75rem;
   padding-bottom: 2.5rem;
 `;
 
-const ButtonsContainer = styled.div`
+const ButtonContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 6px;
+  gap: 2rem;
   padding-bottom: 3rem;
+`;
+
+const Button = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
 
 const FooterColumnContainer = styled.div`
   display: flex;
   flex-wrap: wrap;
-  gap: 12px;
+  gap: 1rem;
   justify-content: space-between;
-color: #000;
-padding: 0 8rem 0 8rem;
+  color: #000;
+  padding: 0 8rem;
+  @media only screen and (min-width: 320px) and (max-width: 480px) {
+    padding: 0 1.5rem;
+    gap: 0.3rem;
+  }
 
+  @media only screen and (min-width: 481px) and (max-width: 1024px) {
+    padding: 0 3rem;
+  }
 `;
 
 const Column = styled.div`
@@ -60,47 +80,59 @@ const Column = styled.div`
   gap: 2px;
 `;
 
-
-
-
-export const footerLinks = [
-   {
-      title: "Bloom",
-      links: ["About", "FAQs", "Services", "Support"],
-   }, {
-    title: "Connect With Us",
-    links: ["Linkedln", "Twitter", "Instagram", "Facebook"],
- },
-  
-   {
-      title: "Other",
-      links: ["Privacy Policy", "Terms and Condition"],
-   },
-  
-   {
-    title: "Contact Us",
-    links: ["08031574374", "Gwarinpa, Abuja", "gobloom@gmail.com", "Nigeria"],
- },
-];
-
 const Head = styled.h4`
-  color: #2A286A;
+  color: #2a286a;
   font-weight: 700;
-
-`
+`;
 
 const Ul = styled.ul`
-display: flex;
-gap: 7px;
-opacity: 0.75;
-flex-direction: column;
-font-size: 0.9rem;
-padding-bottom: 1rem;
-`
+  display: flex;
+  gap: 7px;
+  opacity: 0.75;
+  flex-direction: column;
+  font-size: 0.9rem;
+  padding-bottom: 1rem;
+  @media only screen and (min-width: 320px) and (max-width: 480px) {
+    font-size: 0.85rem;
+  }
+`;
+
+const FooterCopyWright = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+  color: #000;
+  @media only screen and (min-width: 320px) and (max-width: 480px) {
+    gap: 0.3rem;
+  }
+`;
+
+export const footerLinks = [
+  {
+    title: "Bloom",
+    links: ["About", "FAQs", "Services", "Support"],
+  },
+  {
+    title: "Connect With Us",
+    links: ["Linkedln", "Twitter", "Instagram", "Facebook"],
+  },
+
+  {
+    title: "Other",
+    links: ["Privacy Policy", "Terms and Condition"],
+  },
+
+  {
+    title: "Contact Us",
+    links: ["08031574374", "Gwarinpa, Abuja", "gobloom@gmail.com", "Nigeria"],
+  },
+];
+
 const FooterColumn = ({ title, links }: { title: string; links: string[] }) => (
   <Column>
     <Head>{title}</Head>
-    <Ul >
+    <Ul>
       {links.map((link, index) => (
         <Link href="/" key={index}>
           {link}
@@ -114,32 +146,31 @@ const Footer = () => {
   return (
     <FooterContainer>
       <Section>
-        <Title>
-          Grow Your Finance With Bloom 
-        </Title>
+        <Title>Grow Your Finance With Bloom</Title>
         <Subtitle>
-         Take advantage of bloom and give your 
-          <br  /> self financial freedom
+          Take advantage of bloom and give your
+          <br /> self financial freedom
         </Subtitle>
-        <ButtonsContainer>
+        <ButtonContainer>
           <Image src={googleplay} alt="googleplay-btn" />
-          <button className="flex justify-center items-center  border border-black py-2">
+          <Button>
             <Image src={apple} alt="apple-btn" />
-            <span className="raleway text-[0.875.rem] font-semibold">
-              App Store
-            </span>
-          </button>
-        </ButtonsContainer>
+            <span>App Store</span>
+          </Button>
+        </ButtonContainer>
       </Section>
       <Section>
         <FooterColumnContainer>
           {footerLinks.map((column, index) => (
-            <FooterColumn key={index} title={column.title} links={column.links} />
+            <FooterColumn
+              key={index}
+              title={column.title}
+              links={column.links}
+            />
           ))}
         </FooterColumnContainer>
-      <Divider />
-        <FooterColumnContainer>
-        
+        <Divider />
+        <FooterCopyWright>
           <div className="flex gap-1 items-center">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -160,12 +191,12 @@ const Footer = () => {
                 strokeLinecap="round"
               />
             </svg>
-            
+
             <p className="lato text-sm leading-[1.5rem]">
               2024 Bloom. All rights reserved
             </p>
           </div>
-        </FooterColumnContainer>
+        </FooterCopyWright>
       </Section>
     </FooterContainer>
   );
