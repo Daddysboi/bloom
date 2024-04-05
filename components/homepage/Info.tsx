@@ -2,7 +2,7 @@
 import styled from "styled-components";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination, Autoplay } from "swiper/modules";
-import "../../app/swiper.css";
+// import "../../app/swiper.css";
 // import "../../app/globals.css";
 import "swiper/css";
 import "swiper/css/pagination";

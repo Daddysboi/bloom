@@ -64,7 +64,7 @@ const FooterColumnContainer = styled.div`
   padding: 0 8rem;
   @media only screen and (min-width: 320px) and (max-width: 699px) {
     grid-template-columns: repeat(2, 1fr);
-    padding: 0 3rem;
+    padding: 0 1.5rem;
   }
 
   @media only screen and (min-width: 700px) and (max-width: 900px) {

@@ -65,8 +65,8 @@ h3 {
 .swiper-pagination-horizontal.swiper-pagination-bullets
 	.swiper-pagination-bullet {
 	background-color: #000000;
-	width: 1rem;
-	height: 1rem;
+	width: 0.5rem;
+	height:0.5rem;
 }
 
 .swiper-custom-pagination {
@@ -77,7 +77,7 @@ h3 {
 }
 
 .swiper-pagination-bullet-active {
-	background-color: #9d2ce4 !important;
+	background-color: #2A286A !important;
 }
 
 .swiper-button-prev, .swiper-button-next{
@@ -85,8 +85,8 @@ h3 {
 	border-radius: 50%;
 	height: 1.2rem !important;
 		width: 1.2rem !important;
-	border: 2px solid #9d2ce4;
-	color: #9d2ce4 !important;
+	border: 2px solid #2A286A;
+	color: #2A286A !important;
 	top: var(--swiper-navigation-top-offset, 90%) !important;
 	
 	@media screen and (min-width: 540px) {	
