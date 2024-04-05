@@ -1,4 +1,3 @@
-"use client";
 import Image from "next/image";
 import styled from "styled-components";
 import Link from "next/link";
@@ -58,24 +57,24 @@ const Button = styled.div`
 `;
 
 const FooterColumnContainer = styled.div`
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
   gap: 1rem;
-  justify-content: space-between;
   color: #000;
   padding: 0 8rem;
-  @media only screen and (min-width: 320px) and (max-width: 480px) {
-    padding: 0 1.5rem;
-    gap: 0.3rem;
+  @media only screen and (min-width: 320px) and (max-width: 699px) {
+    grid-template-columns: repeat(2, 1fr);
+    padding: 0 3rem;
   }
 
-  @media only screen and (min-width: 481px) and (max-width: 1024px) {
+  @media only screen and (min-width: 700px) and (max-width: 900px) {
+    /* grid-template-columns: repeat(2, 1fr); */
     padding: 0 3rem;
   }
 `;
 
 const Column = styled.div`
-  display: flex;
+  /* display: flex; */
   flex-direction: column;
   gap: 2px;
 `;
@@ -129,7 +128,12 @@ export const footerLinks = [
   },
 ];
 
-const FooterColumn = ({ title, links }: { title: string; links: string[] }) => (
+interface Footer {
+  title: string;
+  links: string[];
+}
+
+const FooterColumn = ({ title, links }: Footer) => (
   <Column>
     <Head>{title}</Head>
     <Ul>

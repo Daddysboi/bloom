@@ -1,15 +1,15 @@
 "use client";
 import styled from "styled-components";
 
-import HeroSection from "@/components/homepageComponents/Hero@";
-import InformationSection from "@/components/homepageComponents/Info@";
-import Header from "@/components/homepageComponents/Header@";
-import AdSection from "@/components/homepageComponents/AdSection@";
-import Testimonials from "@/components/homepageComponents/Testimonials@";
-import Footer from "@/components/homepageComponents/Footer@";
-import About from "@/components/homepageComponents/About@";
+import HeroSection from "@/components/homepage/Hero@";
+import InformationSection from "@/components/homepage/Info@";
+import Header from "@/components/homepage/Header@";
+import AdSection from "@/components/homepage/AdSection@";
+import Testimonials from "@/components/homepage/Testimonials@";
+import Footer from "@/components/homepage/Footer@";
+import About from "@/components/homepage/About@";
 
-import FAQs from "@/components/homepageComponents/FAQs@";
+import FAQs from "@/components/homepage/FAQs@";
 
 const Banner = styled.div`
   padding-bottom: 5rem;

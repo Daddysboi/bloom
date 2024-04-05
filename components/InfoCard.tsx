@@ -1,10 +1,10 @@
-"use client";
 import styled from "styled-components";
 import Image from "next/image";
 import { StaticImageData } from "next/image";
 
 const CardWrapper = styled.figure`
-  width: 15rem;
+  /* position: relative; */
+
   border-radius: 0.5rem;
   overflow: hidden;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -13,6 +13,8 @@ const CardWrapper = styled.figure`
   flex-direction: column;
   gap: 0.5rem;
   background-color: #dfdefa;
+  /* max-width: 15rem; */
+  min-height: 14rem;
 `;
 
 const Title = styled.div`
@@ -29,19 +31,21 @@ const Content = styled.p`
   opacity: 0.75;
 `;
 
-interface Info {
+interface Props {
   icon: StaticImageData;
   title: string;
   content: string;
 }
-const InfoCard = ({ icon, title, content }: Info) => {
-  return (
-    <CardWrapper>
-      <Image src={icon} alt="card-icon" width={32} height={32} />
-      <Title>{title}</Title>
-      <Content>{content}</Content>
-    </CardWrapper>
-  );
-};
 
-export default InfoCard;
+export default function infoCard(props: Props) {
+  const { icon, title, content } = props;
+  return (
+    <div>
+      <CardWrapper>
+        <Image src={icon} alt="card-icon" width={32} height={32} />
+        <Title>{title}</Title>
+        <Content>{content}</Content>
+      </CardWrapper>
+    </div>
+  );
+}

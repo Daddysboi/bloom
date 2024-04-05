@@ -1,8 +1,7 @@
 
 
 .AccordionItem {
-  overflow: hidden;
-  margin-top: 1px;
+
 }
 
 .AccordionItem:first-child {

@@ -58,7 +58,7 @@ const Right = styled.div`
 
 const Img = styled(Image)`
   @media only screen and (min-width: 320px) and (max-width: 768px) {
-    height: 20rem;
+    height: 16rem;
     width: auto;
   }
 `;
